@@ -1,0 +1,64 @@
+You are the brilliant & top player in your academy. The academy decided to conduct an ceremony for the senior player, they asked you to set up the seating arrangements in the order of tree structure. So, you decided to solve that with the help of binary search tree implementation. When the coach arrived he was searching for in senior player seating arrangement. Instead of doing it manually, you decided to solve it by using programming with the help of your coder friend.
+
+Input Format:
+Get continuous input until user enters a negative value.
+
+Output Format:
+Print "Found" if senior player is found else print "Not Found"
+
+Sample Input: 
+10
+5
+12
+7
+15
+18
+1
+-1
+7
+
+Sample Output:
+Found
+
+
+SOLUTION:
+
+
+class Node:
+    def __init__(self,key):
+        self.left=None
+        self.right=None
+        self.val=key
+class BST:
+    def __init__(self):
+        self.root=None
+    def insert(self,root,key):
+        if root is None:
+            return(Node(key))#10
+        else:
+            if root.val>key:
+                root.left=self.insert(root.left,key)
+            else:
+                root.val>key
+                root.right=self.insert(root.right,key)
+            return root
+    def search(self,root,key):
+        if root is None or root.val==key:
+            return root
+        if root.val>key:
+            return self.search(root.left,key)
+        return self.search(root.right,key)
+#main progran
+bst=BST()
+while(True):
+    value=int(input())
+    if value<0:
+        break
+    bst.root=bst.insert(bst.root,value)
+search_val=int(input())
+var=bst.search(bst.root,search_val)
+if var:
+    print("Found")
+else:
+    print("Not Found")
+        
