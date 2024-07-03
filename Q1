@@ -1,0 +1,61 @@
+You are the brilliant & top player in your academy. The academy decided to conduct an ceremony for the senior player, they asked you to set up the seating arrangements in the order of tree structure. So, you decided to solve that with the help of binary search tree implementation.
+
+Input Format:
+Get continuous input until user enters a negative value.
+
+Output Format:
+Print the given input order in the form of tree (BST)
+
+Sample Input: 
+10
+5
+12
+7
+15
+18
+1
+-1
+
+Sample Output:
+1 5 7 10 12 15 18 
+
+Requested files
+Main.py
+
+
+SOLUTION:
+
+
+class Node:
+    def __init__(self,key):
+        self.left=None
+        self.right=None
+        self.val=key
+class BST:
+    def __init__(self):
+        self.root=None
+    def insert(self,root,key):
+        if root is None:
+            return(Node(key))
+        else:
+            if root.val>key:
+                root.left=self.insert(root.left,key)
+            else:
+                root.right=self.insert(root.right,key)
+        return root        
+    def inorder(self,root):
+        if root:
+            self.inorder(root.left)
+            print(root.val, end=" ")
+            self.inorder(root.right)
+        
+#main program
+bst=BST()
+while True:
+    value=int(input())
+    if value<0:
+        break
+    else:
+        bst.root=bst.insert(bst.root, value)
+bst.inorder(bst.root)
+print()
