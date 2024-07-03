@@ -1,0 +1,64 @@
+Develop a binary search tree (BST) to manage student records in a university. Each node in the BST represents a student, identified by a unique Student ID. The BST will list the students in alphabetical order by their id using pre-order traversal.
+
+Input Format:
+Get continuous input until user enters a negative value.
+
+Output Format:
+Print the student id in pre-order traversals.
+
+Sample Input: 
+10
+5
+12
+7
+15
+18
+1
+-1
+
+Sample Output:
+10 5 1 7 12 15 18 
+
+
+SOLUTION:
+
+
+class Node:
+    def __init__(self,key):
+        self.left=None
+        self.right=None
+        self.val=key
+class BST:
+    def __init__(self):
+        self.root=None
+    def insert(self,root,key):
+        if root is None:
+            return(Node(key))#10
+        else:
+            if root.val>key:
+                root.left=self.insert(root.left,key)
+            else:
+                root.val>key
+                root.right=self.insert(root.right,key)
+            return root
+    def preorder(self,root):
+        if root:
+            print(root.val,end=" ")
+            self.preorder(root.left)
+            self.preorder(root.right)
+#main program
+bst=BST()
+while 1:
+    value=int(input())
+    if value<0:
+        break
+    else:
+        bst.root=bst.insert(bst.root,value)
+bst.preorder(bst.root)
+print()
+
+
+
+
+
+
